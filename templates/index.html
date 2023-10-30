@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Classificador de risco de empréstimo</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/style.css') }}">
+  
+</head>
+
+<body style="background: #467">
+ <div class="login">
+  <!--<img src="../imagem/img.jpg" width="150" height="70">-->
+	<h1>Classificador de risco de crédito</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}" method="post">
+    <input type="text" name="person_age" placeholder="Idade em anos" required="required" />
+    <input type="text" name="person_income" placeholder="Renda anual em $" required="required" />
+		<input type="text" name="person_emp_length" placeholder="Tempo de serviço no emprego atual ou último emprego em anos" required="required" />
+		<input type="text" name="loan_amnt" placeholder="Quantia de crédito solicitada em $" required="required" />
+
+        <!--class="btn btn-primary btn-block btn-large"-->
+        <button type="submit" class="btnSubmit">Classificar Risco</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+
+
+</body>
+</html>
