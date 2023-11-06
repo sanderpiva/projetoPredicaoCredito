@@ -22,10 +22,8 @@ def predict():
     return render_template("index.html", prediction_text="Res: " + str(output))
 
 @app.route("/api", methods=["POST"])
-
 def results():
     data = request.get_json(force=True)
     pred = model.predict([np.array(list(data.values()))])
-    output = pred[0]
+    output = ("Empréstimo com adimplência" if pred[0] == 0 else "Empréstimo com inadimplência")
     return jsonify(output)
-
